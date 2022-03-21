@@ -1,0 +1,78 @@
+$color-pink: hsl(328, 100%, 50%);
+$color-green: hsl(142, 100%, 50%);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    background-color: hsl(0, 0%, 13%);
+    overflow: hidden;
+    min-height: 100vh;
+}
+label {
+    position: relative;
+    width: 9.5em;
+    height: 9.5em;
+    margin: 0.1em;
+}
+.face {
+    position: absolute;
+    inset: 0;
+    background-color: hsl(0, 0%, 20%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 3.5em;
+        left: 2.5em;
+        background-color: hsl(0, 0%, 7%);
+        opacity: 0.5;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        box-shadow: 3.5em 0 0 hsl(0, 0%, 7%);
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        top: 6em;
+        left: 3.5em;
+        background-color: hsl(0, 0%, 7%);
+        opacity: 0.5;
+        width: 2.5em;
+        height: 0.7em; 
+        border-radius: 0.5em;
+        transition: 0.5s;
+    }
+}
+label input {
+    appearance: none;
+}
+label input:checked ~ .face::after {
+    width: 3.5em;
+    height: 1.5em;
+    left: 3em; 
+    border-radius:  0  0 1.25em 1.25em;
+}
+label.smile-green input:checked ~ .face {
+    background-color: $color-green;
+    filter: drop-shadow(0 0 4em $color-green)
+    drop-shadow(0 0 8em $color-green)
+    drop-shadow(0 0 12em $color-green);
+    z-index: 1;
+}
+label.smile-pink input:checked ~ .face {
+    background-color: $color-pink;
+    filter: drop-shadow(0 0 4em $color-pink)
+    drop-shadow(0 0 8em $color-pink)
+    drop-shadow(0 0 12em $color-pink);
+    z-index: 1;
+} 
